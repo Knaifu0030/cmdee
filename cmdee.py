@@ -117,10 +117,8 @@ Just remember: with great power comes great responsibility... and occasional ker
         if not event.value.strip():
             return
             
-        # Clear input
         event.input.value = ""
         
-        # Add prompt to chat
         container = self.query_one("#chat-container")
         prompt_widget = Prompt(f"$ {event.value}")
         response_widget = Response("🤔 Processing... *beep boop*")
@@ -129,9 +127,10 @@ Just remember: with great power comes great responsibility... and occasional ker
         container.mount(response_widget)
         container.scroll_end(animate=False)
         
-        # Get response in background
         self.send_prompt(event.value, response_widget)
 
 if __name__ == "__main__":
-    app = CmdeeApp()
-    app.run()
+    import uvicorn
+    
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
