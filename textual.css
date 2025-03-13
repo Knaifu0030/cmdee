@@ -1,0 +1,28 @@
+Screen {
+    align: center middle;
+}
+
+Input {
+    dock: bottom;
+    margin: 1 2;
+}
+
+VerticalScroll {
+    height: 1fr;
+    border: solid green;
+    margin: 1 2;
+}
+
+Prompt {
+    margin: 1 2;
+    padding: 1 2;
+    background: $boost;
+    border: solid $accent;
+}
+
+Response {
+    margin: 1 2;
+    padding: 1 2;
+    background: $panel;
+    border: solid $success;
+}
