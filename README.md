@@ -37,10 +37,6 @@ Run locally:
 python cmdee.py
 ```
 
-Run as a web app:
-```bash
-textual-serve cmdee.py
-```
 
 ## Contributing
 
