@@ -27,15 +27,12 @@ class Response(Markdown):
 
 class CmdeeApp(App):
     TITLE = "Cmdee - Your Snarky Terminal Companion"
-    # Keep a relative or absolute path to your CSS file
     CSS_PATH = os.path.join(os.path.dirname(__file__), "textual.css")
 
     def __init__(self):
         super().__init__()
-        # Load environment variables (e.g., your GEMINI_API_KEY)
         load_dotenv()
         genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
-        # Initialize your Google Generative AI model
         self.model = genai.GenerativeModel('gemini-2.0-flash')
         
     def on_mount(self) -> None:
@@ -77,7 +74,6 @@ Just remember: with great power comes great responsibility... and occasional ker
     def send_prompt(self, prompt: str, response_widget: Response) -> None:
         """Send a prompt to the AI in a background thread."""
         try:
-            # Combine system prompt with user prompt
             full_prompt = f"{SYSTEM}\n\nUser: {prompt}\nCmdee:"
             response = self.model.generate_content(full_prompt, stream=True)
             
@@ -112,6 +108,7 @@ Just remember: with great power comes great responsibility... and occasional ker
         self.send_prompt(user_text, response_widget)
 
 if __name__ == "__main__":
-    # TUI-only: run the app in the terminal
     app = CmdeeApp()
     app.run()
+
+#I tried 
